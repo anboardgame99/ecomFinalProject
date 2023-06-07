@@ -1,0 +1,43 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center ">
+                  <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                      class="img-fluid" alt="Sample image">
+                  </div>
+                  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+                        <form method="POST">
+                            {% csrf_token %}
+                              <!-- Email input -->
+                              <div class="form-outline">
+                                <label for="singin-email-2 mb-n3">Email address *</label>
+                                <input type="text" class="form-control" id="singin-email-2" name="email" required>
+                              </div>
+
+                              <!-- Password input -->
+                              <div class="form-outline mb-n3" >
+                                  <label for="singin-password-2">Password *</label>
+                                  <input type="password" class="form-control" id="singin-password-2" name="password" required>
+                              </div>
+
+
+                              <div class="text-center text-lg-start mt-4 pt-2">
+                                <button type="submit" class="btn btn-primary btn-lg"
+                                  style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+
+                                <p class="small fw-bold mt-1 pt-1 mb-3">Don't have an account? <a href="{% url 'userauths:register' %}"
+                                    class="link-danger">Sign Up</a></p>
+                              </div>
+                        </form>
+                  </div>
+            </div>
+      </div>
+    </main><!-- End .main -->
+{% endblock content %}
+
+
+

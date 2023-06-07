@@ -1,0 +1,60 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center ">
+                  <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                      class="img-fluid" alt="Sample image">
+                  </div>
+                  <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ form.errors }}</strong>
+                            </div>
+                        {% endif %}
+                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+
+                        <form method="POST">
+                            {% csrf_token %}
+                            <!-- Email input -->
+                            <div class="form-outline mb-n3">
+                                <label for="singin-email-2">Username *</label>
+                                <input type="text" class="form-control" id="singin-email-2" name="username" required>
+{#                                {{form.username}}#}
+                            </div>
+
+                            <div class="form-outline mb-n3">
+                                <label for="singin-username-2">Email address *</label>
+                                <input type="email" class="form-control" id="singin-username-2" name="email" required>
+{#                                {{form.email}}#}
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-n3" >
+                                <label for="singin-password-2">Password *</label>
+                                <input type="password" class="form-control" id="singin-password-2" name="password1" required>
+{#                                {{form.password1}}#}
+                            </div>
+
+                            <div class="form-outline mb-n3" >
+                                  <label for="singin-password-2-2">Repeat Password *</label>
+                                  <input type="password" class="form-control" id="singin-password-2-2" name="password2" required>
+{#                                {{form.password2}}#}
+                            </div>
+
+
+                            <div class="text-center text-lg-start mt-4 pt-2">
+                                <button type="submit" class="btn btn-primary btn-lg"
+                                  style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
+                            </div>
+                        </form>
+                        <p class="text-center small fw-bold mt-1 pt-1 mb-3">Already have an account? <a href="{% url 'userauths:login' %}"
+                                    class="link-danger">Sign In</a></p>
+                  </div>
+            </div>
+      </div>
+    </main><!-- End .main -->
+{% endblock content %}
+
