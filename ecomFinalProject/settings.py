@@ -38,6 +38,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,7 +48,7 @@ INSTALLED_APPS = [
 
     # CUSTOM APPS
     'core',
-
+    'userauths'
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,15 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# JAZZMIN SETTING
+
+JAZZMIN_SETTINGS = {
+    'site_title': "Ecommerce Admin",
+    'site_brand': "Admin Dashboard",
+    'site_logo': "assets/images/icons/favicon.ico",
+    'copyright': "Ng.Duong - P.An",
+}
+
+AUTH_USER_MODEL = 'userauths.User'
