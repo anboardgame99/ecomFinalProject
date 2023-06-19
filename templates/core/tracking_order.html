@@ -1,0 +1,58 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <main class="main">
+        <div class="page-header text-center" style="background-image: url({% static 'assets/images/tracking/demo.jpg' %})">
+        		<div class="container">
+        			<h1 class="page-title">Search<span>Delivery</span></h1>
+        		</div><!-- End .container -->
+        </div><!-- End .page-header -->
+
+    <div class="page-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <form class="mx-auto text-center" method="GET">
+                        <div class="form-group mb-3">
+                            <label for="tracking-input"></label>
+                            <input class="form-control" id="tracking-input" name="tracking-id" type="text" required placeholder="Enter your tracking ID">
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </main>
+
+
+
+{% endblock content %}
+{#    <link rel="stylesheet" href="{% static 'assets/css/tracking/main.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'lib/font-awesome/css/all.min.css' %}">#}
+
+{#<div class="container">#}
+{#            <article class="card">#}
+{#                <div class="card-body">#}
+{#                    <h6>Order ID: OD45345345435</h6>#}
+{#                    <article class="card">#}
+{#                        <div class="card-body row">#}
+{#                            <div class="col"> <strong>Estimated Delivery time:</strong> <br>29 nov 2019 </div>#}
+{#                            <div class="col"> <strong>Shipping BY:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>#}
+{#                            <div class="col"> <strong>Status:</strong> <br> Picked by the courier </div>#}
+{#                            <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>#}
+{#                        </div>#}
+{#                    </article>#}
+{#                    <div class="track">#}
+{#                        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>#}
+{#                        <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked by courier</span> </div>#}
+{#                        <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>#}
+{#                        <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Ready for pickup</span> </div>#}
+{#                    </div>#}
+{#                    <a href="#" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>#}
+{#                </div>#}
+{#            </article>#}
+{#        </div>#}

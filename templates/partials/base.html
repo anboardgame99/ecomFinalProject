@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Molla - Bootstrap eCommerce Template</title>
+    <title>Andug - Mobile eCommerce</title>
     <meta name="keywords" content="Final Project - eCommerce">
     <meta name="description" content="eCommere for anything">
     <meta name="author" content="p-themes">
@@ -18,11 +18,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/icons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/icons/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'assets/images/icons/site.html' %}">
-    <link rel="mask-icon" href="{% static 'assets/images/icons/safari-pinned-tab.svg' %}" color="#666666">
-    <link rel="shortcut icon" href="{% static 'assets/images/icons/favicon.ico' %}">
-    <meta name="apple-mobile-web-app-title" content="Molla">
-    <meta name="application-name" content="Molla">
-    <meta name="msapplication-TileColor" content="#cc9966">
+    <link rel="shortcut icon" href="{% static 'assets/images/icons/favi.ico' %}">
+    <meta name="apple-mobile-web-app-title" content="Andug">
+    <meta name="application-name" content="Andug">
+    <meta name="msapplication-TileColor" content="#fbfbfd">
     <meta name="msapplication-config" content="{% static 'assets/images/icons/browserconfig.xml' %}">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="{% static 'assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css' %}">
@@ -97,7 +96,7 @@
                         </button>
 
                         <a href="{% url 'home:index' %}" class="logo">
-                            <img src="{% static 'assets/images/demos/demo-4/logo.png' %}" alt="Molla Logo" width="105" height="25">
+                            <img src="{% static 'assets/images/logo.png' %}" alt="Molla Logo" width="105" height="25">
                         </a>
                     </div><!-- End .header-left -->
 
@@ -649,7 +648,7 @@
 	            	<div class="row">
 	            		<div class="col-sm-6 col-lg-3">
 	            			<div class="widget widget-about">
-	            				<img src="{% static 'assets/images/demos/demo-4/logo-footer.png' %}" class="footer-logo" alt="Footer Logo" width="105" height="25">
+	            				<img src="{% static 'assets/images/logo-footer.png' %}" class="footer-logo" alt="Footer Logo" width="105" height="25">
 	            				<p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
 
 	            				<div class="widget-call">
@@ -695,6 +694,7 @@
 
 	            				<ul class="widget-list">
 	            					<li><a href="{% url 'userauths:login' %}">Sign In</a></li>
+	            					<li><a href="#">Sign In</a></li>
 	            					<li><a href="cart.html">View Cart</a></li>
 	            					<li><a href="#">My Wishlist</a></li>
 	            					<li><a href="#">Track My Order</a></li>

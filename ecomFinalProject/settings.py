@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import environ
 
+
 env = environ.Env(
     DEBUG=(bool, False)
 )
@@ -32,7 +33,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -48,7 +49,8 @@ INSTALLED_APPS = [
 
     # CUSTOM APPS
     'core',
-    'userauths'
+    'userauths',
+    'coverage'
 ]
 
 MIDDLEWARE = [
@@ -155,7 +157,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 JAZZMIN_SETTINGS = {
     'site_title': "Ecommerce Admin",
     'site_brand': "Admin Dashboard",
-    'site_logo': "assets/images/icons/favicon.ico",
+    'site_logo': "assets/images/icons/logo.png",
     'copyright': "Ng.Duong - P.An",
 }
 

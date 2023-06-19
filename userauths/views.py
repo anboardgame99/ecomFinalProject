@@ -4,14 +4,13 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.shortcuts import redirect
 
-# from userauths.models import User
 
+# from userauths.models import User
 
 # from django.conf import settings
 
 # User = settings.AUTH_USER_MODEL
 # Create your views here.
-
 def resgister_view(request):
     if request.user.is_authenticated:
         messages.warning(request, f"You're already logged in.")
@@ -20,7 +19,7 @@ def resgister_view(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST or None)
         if form.is_valid():
-            new_user = form.save()
+            # new_user = form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f"Hey {username}, your account was created successfully.")
 
@@ -46,25 +45,25 @@ def login_view(request):
         email = request.POST.get("email")
         password = request.POST.get("password")
 
-        try:
-            # user = User.objects.get(email=email)
-
+        if 'login' in request.POST:
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
                 messages.success(request, "You are logged in.")
                 return redirect("home:index")
             else:
-                messages.warning(request, "User does not exist. Create an account.")
+                messages.warning(request, "Invalid credentials.")
+        elif 'admin' in request.POST:
+            email = request.POST.get("email")
+            user = authenticate(request, username=email, password=password)
+            if user is not None and user.is_staff:
+                login(request, user)
+                messages.success(request, "Admin login successful.")
+                return redirect("admin:index")
+            else:
+                messages.warning(request, "Admin login failed.")
 
-        except:
-            messages.warning(request, f"User with {email} does not exist")
-
-    context = {
-
-    }
-
-    return render(request, "userauths/login.html", context)
+    return render(request, "userauths/login.html")
 
 
 def logout_view(request):
