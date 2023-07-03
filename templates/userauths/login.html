@@ -24,19 +24,23 @@
                                   <input type="password" class="form-control" id="singin-password-2" name="password" required>
                               </div>
 
-                                <div class="text-center text-lg-start mt-4 pt-2">
-                                <button type="submit" name="login" value="login" class="btn btn-primary btn-lg"
-                                  style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-                                <button type="submit" name="admin" value="admin" class="btn btn-primary btn-lg"
-                                  style="padding-left: 2.5rem; padding-right: 2.5rem; background-color:#34C759">Log in as Admin</button>
-                                </div>
 
-                                <p class="small fw-bold mt-1 pt-1 mb-3 text-center">Don't have an account? <a href="{% url 'userauths:register' %}"
+                              <div class="text-center text-lg-start mt-4 pt-2">
+                                <button type="submit" class="btn btn-primary btn-lg"
+                                  style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+
+                                <p class="small fw-bold mt-1 pt-1 mb-3">Don't have an account? <a href="{% url 'userauths:register' %}"
+<<<<<<<<< Temporary merge branch 1
+                                    class="link-danger">Register</a></p>
+=========
                                     class="link-danger">Sign Up</a></p>
+>>>>>>>>> Temporary merge branch 2
+                              </div>
                         </form>
                   </div>
             </div>
       </div>
+    </main><!-- End .main -->
 {% endblock content %}
 
 

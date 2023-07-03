@@ -4,13 +4,28 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.shortcuts import redirect
 
+<<<<<<<<< Temporary merge branch 1
+from django.conf import settings
 
+User = settings.AUTH_USER_MODEL
+# Create your views here.
+
+def resgister_view(request):
+    if request.method == "POST":
+        form = UserRegisterForm(request.POST or None)
+        if form.is_valid():
+            # new_user = form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f"Tài khoản {username} đã được tạo thành công.")
+=========
 # from userauths.models import User
+
 
 # from django.conf import settings
 
 # User = settings.AUTH_USER_MODEL
 # Create your views here.
+
 def resgister_view(request):
     if request.user.is_authenticated:
         messages.warning(request, f"You're already logged in.")
@@ -19,9 +34,10 @@ def resgister_view(request):
     if request.method == "POST":
         form = UserRegisterForm(request.POST or None)
         if form.is_valid():
-            # new_user = form.save()
+            new_user = form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f"Hey {username}, your account was created successfully.")
+>>>>>>>>> Temporary merge branch 2
 
             new_user = authenticate(username=form.cleaned_data['email'], password=form.cleaned_data['password1'])
             login(request, new_user)
@@ -35,7 +51,10 @@ def resgister_view(request):
     }
     return render(request, "userauths/register.html", context)
 
+<<<<<<<<< Temporary merge branch 1
+=========
 
+>>>>>>>>> Temporary merge branch 2
 def login_view(request):
     if request.user.is_authenticated:
         messages.warning(request, f"You're already logged in.")
@@ -45,28 +64,51 @@ def login_view(request):
         email = request.POST.get("email")
         password = request.POST.get("password")
 
-        if 'login' in request.POST:
+        try:
+<<<<<<<<< Temporary merge branch 1
+            user = User.object.get(email=email)
+        except:
+            messages.warning(request, f"User with {email} does not exist")
+
+        user = authenticate(request, email=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, "You are logged in.")
+            return redirect("home:index")
+        else:
+            messages.warning(request, "User does not exist. Create an account.")
+
+=========
+            # user = User.objects.get(email=email)
+
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
                 messages.success(request, "You are logged in.")
                 return redirect("home:index")
             else:
-                messages.warning(request, "Invalid credentials.")
-        elif 'admin' in request.POST:
-            email = request.POST.get("email")
-            user = authenticate(request, username=email, password=password)
-            if user is not None and user.is_staff:
-                login(request, user)
-                messages.success(request, "Admin login successful.")
-                return redirect("admin:index")
-            else:
-                messages.warning(request, "Admin login failed.")
+                messages.warning(request, "User does not exist. Create an account.")
 
-    return render(request, "userauths/login.html")
+        except:
+            messages.warning(request, f"User with {email} does not exist")
 
+>>>>>>>>> Temporary merge branch 2
+    context = {
+
+    }
+
+    return render(request, "userauths/login.html", context)
+
+<<<<<<<<< Temporary merge branch 1
+def logout_view(request):
+    logout(request)
+    messages.success(request, "You logged out.")
+    return redirect("home:index")
+=========
 
 def logout_view(request):
     logout(request)
     messages.success(request, "You logged out.")
     return redirect("home:index")
+>>>>>>>>> Temporary merge branch 2
