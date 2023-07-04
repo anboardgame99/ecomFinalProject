@@ -33,6 +33,9 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if os.getcwd() == '/app':
+    DEBUG = False
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -146,6 +149,7 @@ MEDIA_URL = 'media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -163,6 +167,3 @@ JAZZMIN_SETTINGS = {
 }
 
 AUTH_USER_MODEL = 'userauths.User'
-
-if os.getcwd() == '/app':
-    DEBUG = False
