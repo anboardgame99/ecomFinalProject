@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import environ
 
+import dj_database_url
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -35,6 +36,10 @@ DEBUG = True
 
 if os.getcwd() == '/app':
     DEBUG = False
+
+    DATABASES = {
+        'default': dj_database_url.config(default=os.environ.get('JAWSDB_URL'))
+    }
 
 ALLOWED_HOSTS = ['*']
 
@@ -101,7 +106,6 @@ DATABASES = {
         'PORT': env("DATABASE_PORT"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
