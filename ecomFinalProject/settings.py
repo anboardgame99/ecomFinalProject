@@ -37,9 +37,7 @@ DEBUG = True
 if os.getcwd() == '/app':
     DEBUG = False
 
-    DATABASES = {
-        'default': dj_database_url.config(default=os.environ.get('JAWSDB_URL'))
-    }
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -96,15 +94,19 @@ WSGI_APPLICATION = 'ecomFinalProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE':  env("DATABASE_ENGINE"),
+#         'HOST': env("DATABASE_HOST"),
+#         'NAME': env("DATABASE_NAME"),
+#         'USER': env("DATABASE_USER"),
+#         'PASSWORD': env("DATABASE_PASSWORD"),
+#         'PORT': env("DATABASE_PORT"),
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE':  env("DATABASE_ENGINE"),
-        'HOST': env("DATABASE_HOST"),
-        'NAME': env("DATABASE_NAME"),
-        'USER': env("DATABASE_USER"),
-        'PASSWORD': env("DATABASE_PASSWORD"),
-        'PORT': env("DATABASE_PORT"),
-    }
+    'default': dj_database_url.config(default=os.environ.get('JAWSDB_URL'))
 }
 
 # Password validation
