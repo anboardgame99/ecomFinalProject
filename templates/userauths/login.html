@@ -26,8 +26,11 @@
 
 
                               <div class="text-center text-lg-start mt-4 pt-2">
-                                <button type="submit" class="btn btn-primary btn-lg"
+                                <button type="submit" name="login_user" class="btn btn-primary btn-lg"
                                   style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                                  <button type="submit" name="login_admin" class="btn btn-primary btn-lg"
+                                  style="padding-left: 2.5rem; padding-right: 2.5rem; background-color:#34C759">Login with Admin</button>
+
 
                                 <p class="small fw-bold mt-1 pt-1 mb-3">Don't have an account? <a href="{% url 'userauths:register' %}"
                                     class="link-danger">Sign Up</a></p>
