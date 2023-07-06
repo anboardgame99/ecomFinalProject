@@ -6,7 +6,7 @@ class ProductImagesAdmin(admin.TabularInline):
 
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImagesAdmin]
-    list_display = ['user', 'product_name', 'product_description', 'image', 'product_quantity', 'product_price']
+    list_display = ['user', 'product_name', 'product_description', 'image', 'product_quantity', 'product_price', 'product_id']
 
 # Register your models here.
 admin.site.register(Product, ProductAdmin)

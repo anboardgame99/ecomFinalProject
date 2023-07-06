@@ -13,8 +13,18 @@ def index(request):
     }
     return render(request, 'core/index.html', context)
 
+def product_detail_view(request, pid):
+    product = Product.objects.get(product_id=pid)
+    # Get object or 404
+
+    context = {
+        'p': product,
+    }
+
+    return render(request, 'core/product-detail.html', context)
 
 def success(request):
+
     return render(request, 'core/success.html')
 
 
