@@ -22,16 +22,12 @@ from django.conf.urls.static import static
 
 from django.views import defaults as default_views
 
-from core.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("core.urls")),
     path('user/', include('userauths.urls')),
     path('coverage/', include('coverage.urls')),
-
-    # Product
-    path("product/<pid>/", product_detail_view, name="product-detail"),
 ]
 
 if settings.DEBUG:

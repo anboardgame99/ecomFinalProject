@@ -66,7 +66,8 @@
 {#                                    </div><!-- End .rating-container -->#}
 
                                     <div class="product-price">
-                                        <span class="new-price">{{ p.product_price }}</span>
+                                        <input type="hidden" class="product-price-{{ p.product_id }}" value="{{ p.product_price }}">
+                                        <span>{{ p.product_price }}</span>
 {#                                        <span class="old-price">$310.00</span>#}
                                     </div><!-- End .product-price -->
 
@@ -91,9 +92,20 @@
 {#                                        <a href="#" class="size-guide"><i class="icon-th-list"></i>size guide</a>#}
 {#                                    </div><!-- End .details-filter-row -->#}
 
+                                    <div class="details-filter-row details-row-size">
+                                        <label for="qty">Qty:</label>
+                                        <div class="product-details-quantity">
+                                            <input type="number" class="form-control product-quantity-{{ p.product_id }}" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                        </div><!-- End .product-details-quantity -->
+                                    </div><!-- End .details-filter-row -->
 
                                     <div class="product-details-action">
-                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        <input type="hidden" class="product-pid-{{ p.product_id }}" value="{{ p.product_id }}">
+                                        <input type="hidden" class="product-image-{{ p.product_id }}" value="{{ p.product_image.url }}">
+                                        <input type="hidden" class="product-name-{{ p.product_id }}" value="{{ p.product_name }}">
+
+                                        <button type="submit" class="btn-product btn-cart add-to-cart-btn" data-index="{{ p.product_id }}"><span>add to cart</span></button>
+{#                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>#}
 
 {#                                        <div class="details-action-wrapper">#}
 {#                                            <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Add to Wishlist</span></a>#}

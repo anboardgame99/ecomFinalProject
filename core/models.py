@@ -9,6 +9,14 @@ STATUS_CHOICE = (
     ('delivered', 'Delivered'),
 )
 
+STATUS = (
+    ("draft", "Draft"),
+    ("disabled", "Disabled"),
+    ("rejected", "Rejected"),
+    ("in_review", "In Review"),
+    ("published", "Published"),
+)
+
 RATING = (
     ("1", "★☆☆☆☆"),
     ("2", "★★☆☆☆"),
@@ -24,6 +32,7 @@ def user_directory_path(instance, filename):
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, verbose_name="User")
 
+    # product_id = ShortUUIDField(primary_key=True, length=10, max_length=20, alphabet="abcdefgh12345", verbose_name="ID")
     product_id = models.AutoField(primary_key=True, verbose_name="ID")
     product_name = models.CharField(max_length=100, verbose_name="Name")
     product_description = models.TextField(verbose_name="Description")
@@ -31,6 +40,12 @@ class Product(models.Model):
     # product_image_url = models.URLField(null=True, verbose_name="Image URL")
     product_quantity = models.PositiveIntegerField(verbose_name="Quantity")
     product_price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Price")
+
+    product_status = models.CharField(choices=STATUS, max_length=10, default="in_review", verbose_name="Product Status")
+
+
+    status = models.BooleanField(default=True)
+    in_stock = models.BooleanField(default=True, verbose_name="In Stock")
 
 
     def __str__(self):

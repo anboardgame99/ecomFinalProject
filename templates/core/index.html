@@ -256,17 +256,22 @@
                             <div class="product product-2">
                                 <figure class="product-media">
                                     <span class="product-label label-circle label-top">Top</span>
-                                    <a href="product.html">
+                                    <a href="{% url "home:product-detail" p.product_id %}">
                                         <img src="{{ p.product_image.url }}" alt="Product image" class="product-image">
                                     </a>
 
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
-                                    </div><!-- End .product-action -->
+{#                                    <div class="product-action-vertical">#}
+{#                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>#}
+{#                                    </div><!-- End .product-action -->#}
 
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                        <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                                   <div class="product-action">
+                                       <input type="hidden" class="product-quantity-{{ p.product_id }}" value="1">
+                                       <input type="hidden" class="product-pid-{{ p.product_id }}" value="{{ p.product_id }}">
+                                       <input type="hidden" class="product-image-{{ p.product_id }}" value="{{ p.product_image.url }}">
+                                       <input type="hidden" class="product-name-{{ p.product_id }}" value="{{ p.product_name }}">
+                                       <input type="hidden" class="product-price-{{ p.product_id }}" value="{{ p.product_price }}">
+                                       <a id="add-to-cart-btn" class="btn-product btn-cart add-to-cart-btn" title="Add to cart" data-index="{{ p.product_id }}"><span>add to cart</span></a>
+                                       <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
@@ -274,10 +279,13 @@
                                     <div class="product-cat">
 {#                                        <a href="#">Laptops</a>#}
                                     </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">{{ p.product_name }}</a></h3><!-- End .product-title -->
+                                    <h3 class="product-title"><a href="{% url "home:product-detail" p.product_id %}">{{ p.product_name }}</a></h3><!-- End .product-title -->
                                     <div class="product-price">
                                         {{ p.product_price }}
-                                    </div><!-- End .product-price -->
+                                    </div>
+
+
+                                    <!-- End .product-price -->
 {#                                    <div class="ratings-container">#}
 {#                                        <div class="ratings">#}
 {#                                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->#}
