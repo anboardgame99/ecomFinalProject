@@ -41,3 +41,6 @@ $(document).ready(function () {
 		// $('.offer-countdown').countdown('pause');
 	}
 });
+
+
+
