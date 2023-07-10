@@ -41,6 +41,18 @@ if os.getcwd() == '/app':
         'default': dj_database_url.config(default=os.environ.get('JAWSDB_URL'))
     }
 
+    AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',
+    }
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_LOCATION = 'static'
+
+    STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
 else:
     DATABASES = {
         'default': {
@@ -52,6 +64,8 @@ else:
             'PORT': env("DATABASE_PORT"),
         }
     }
+
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 ALLOWED_HOSTS = ['*']
@@ -75,6 +89,8 @@ INSTALLED_APPS = [
     # WHITENOISE
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -167,18 +183,14 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-# STORAGES = {
-#     # ...
-#     "staticfiles": {
-#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-#     },
-# }
-
 MEDIA_URL = 'media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Amazon S3 setting
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
