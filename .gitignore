@@ -1,7 +1,7 @@
 venv/
 .env
 media/
-
+.staticfiles/
 .idea
 
 ecomFinalProject/.env
