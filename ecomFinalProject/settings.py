@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os
 import environ
+import os
 
 import dj_database_url
 
@@ -50,6 +50,9 @@ if os.getcwd() == '/app':
     }
     AWS_DEFAULT_ACL = 'public-read'
     AWS_LOCATION = 'static'
+
+    AWS_CLOUDFRONT_KEY_ID = env.str("AWS_CLOUDFRONT_KEY_ID").strip()
+    AWS_CLOUDFRONT_KEY = env.str("AWS_CLOUDFRONT_KEY", multiline=True).encode('ascii').strip()
 
     STORAGES = {"staticfiles": {"BACKEND": "storages.backends.s3boto3.S3ManifestStaticStorage"}}
 else:
