@@ -40,21 +40,17 @@ if os.getcwd() == '/app':
         'default': dj_database_url.config(default=os.environ.get('JAWSDB_URL'))
     }
 
-    # AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-    # AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-    # AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
-    # AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
-    # AWS_S3_CUSTOM_DOMAIN = env('AWS_S3_CUSTOM_DOMAIN')
-    # # # AWS_S3_OBJECT_PARAMETERS = {
-    # #     'CacheControl': 'max-age=86400',
-    # # }
-    # # AWS_DEFAULT_ACL = 'public-read'
-    # # AWS_LOCATION = 'static'
-    #
-    # AWS_CLOUDFRONT_KEY_ID = env.str("AWS_CLOUDFRONT_KEY_ID").strip()
-    # AWS_CLOUDFRONT_KEY = env.str("AWS_CLOUDFRONT_KEY", multiline=True).encode('ascii').strip()
-    #
-    # STORAGES = {"staticfiles": {"BACKEND": "storages.backends.s3boto3.S3ManifestStaticStorage"}}
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_DEFAULT_ACL = None
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+    AWS_QUERYSTRING_AUTH = False
+    # This will make sure that the file URL does not have unnecessary parameters like your access key.
+    AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 else:
     DATABASES = {
         'default': {
@@ -171,6 +167,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+####################################################
+
+# # Static media settings
+# Set the static files storage backend and default file backend to S3
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3ManifestStaticStorage'
+
 STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -183,9 +185,7 @@ MEDIA_URL = 'media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# Amazon S3 setting
-
-
+####################################################
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

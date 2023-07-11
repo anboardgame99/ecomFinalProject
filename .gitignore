@@ -1,6 +1,3 @@
-venv/
-media/
-.staticfiles/
-.idea
-
-ecomFinalProject/.env
+/media/
+/venv/
+.env
