@@ -115,4 +115,3 @@ class Invoice(models.Model):
 
     def __str__(self):
         return self.invoice_id
-
